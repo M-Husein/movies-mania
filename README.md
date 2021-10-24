@@ -1,3 +1,11 @@
+# Movie Mania
+
+1. Download source code
+2. install dependencies with CLI **npm install**
+3. See instructions below
+
+#
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
