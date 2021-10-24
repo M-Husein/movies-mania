@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import Btn from '../Btn';
-import ImgModal from '../ImgModal';
 import CardList from '../card/CardList';
-import AsideHome from '../AsideHome';
+import AsideInfo from '../AsideInfo';
+import ImgModal from '../ImgModal';
 import { getParam } from '../../utils/Q';
 import { getLists } from '../../api';
 import { TOTAL_PAGES } from '../../conts/config';
@@ -33,26 +33,28 @@ export default function SearchResult(){
   const errMessage = () => setError(navigator.onLine ? "Failed get data" : "Your internet is offline");
 
   const getMovies = () => {
-		setLoad(false);
+    if(searchKey){
+      setLoad(false);
 
-    getLists({
-      type: "movie", 
-      page: pageNum, 
-      s: searchKey
-    }, source.token).then(r => {
-      if(r?.data?.Response === "True"){
-        const data = r.data;
-        setList([...list, ...data.Search]);
-      }else{
-        errMessage();
-      }
-    })
-    .catch(errMessage)
-    .then(() => setLoad(true));
-	};
+      getLists({
+        type: "movie", 
+        page: pageNum, 
+        s: searchKey
+      }, source.token).then(r => {
+        if(r?.data?.Response === "True"){
+          const data = r.data;
+          setList([...list, ...data.Search]);
+        }else{
+          errMessage();
+        }
+      })
+      .catch(errMessage)
+      .then(() => setLoad(true));
+    }
+	}
 
 	useEffect(() => {
-		if (searchKey && pageNum <= TOTAL_PAGES) {
+		if (pageNum <= TOTAL_PAGES) {
 			getMovies();
 		}
 
@@ -78,7 +80,7 @@ export default function SearchResult(){
 	}, [lastElement]);
 
   const renderLoadCard = () => [1, 2, 3].map((v) => 
-    <div key={v} className="col">
+    <div key={v} className="col-md-4">
       <div className="card shadow-sm" aria-hidden>
         <div className="card-img-top placeholder h-300px" />
         <div className="card-body">
@@ -137,7 +139,7 @@ export default function SearchResult(){
             </div>
           </div>
 
-          <AsideHome />
+          <AsideInfo />
         </div>
       }
 

@@ -32,7 +32,7 @@ export default function MovieDetail(){
             s: first + (second ? " " + second : "")
           }).then(res => {
             if(res && res.data && res.data.Response === "True"){
-              setDataRelated(res.data);
+              setDataRelated(res.data.Search);
             }
           })
           .catch(errMessage)
@@ -97,7 +97,6 @@ export default function MovieDetail(){
               {renderInfo("IMDb Rating", dataDetail.imdbRating)} 
               {renderInfo("IMDb Votes", dataDetail.imdbVotes)} 
               {renderInfo("Awards", dataDetail.Awards)} 
-
             </dl>
           </>
           : 
@@ -123,39 +122,44 @@ export default function MovieDetail(){
           <div className="card-header">
             Related
           </div>
-          {loadRelated ? 
-            <>
-              <div className="list-group list-group-flush">
-                {(dataRelated.Search || []).filter(f => f.Title !== dataDetail.Title).map((v, i) => 
-                  <Link 
-                    key={i} 
-                    to={"/movie/" + v.imdbID} 
-                    onClick={() => setLoadDetail(false)} 
-                    className="list-group-item list-group-item-action"
-                  >
-                    <div className="d-flex align-items-center">
-                      <Img 
-                        w={40} 
-                        h={40} 
-                        round 
-                        frame 
-                        frameClass="flex-shrink-0" 
-                        className="of-cover" 
-                        alt={v.Title} 
-                        src={v.Poster} 
-                      />
-                      <small className="flex-grow-1 ms-3">
-                        {v.Title}
-                      </small>
-                    </div>
-                  </Link>
-                )}
-              </div>
-            </>
-            : 
-            <div />
-          }
+
+          <div className={"list-group list-group-flush" + (loadRelated ? "" : " placeholder-glow")}>
+            {loadRelated ? 
+              (dataRelated || []).filter(f => f.Title !== dataDetail.Title).map((v, i) => 
+                <Link 
+                  key={i} 
+                  to={"/movie/" + v.imdbID} 
+                  onClick={() => setLoadDetail(false)} 
+                  className="list-group-item list-group-item-action"
+                >
+                  <div className="d-flex align-items-center">
+                    <Img 
+                      w={40} 
+                      h={40} 
+                      round 
+                      frame 
+                      frameClass="flex-shrink-0" 
+                      className="of-cover" 
+                      alt={v.Title} 
+                      src={v.Poster} 
+                    />
+                    <small className="flex-grow-1 ms-3">
+                      {v.Title}
+                    </small>
+                  </div>
+                </Link>
+              )
+              : 
+              [1, 2, 3].map(v => 
+                <div key={v} className="list-group-item">
+                  <div className="placeholder placeholder-lg col-12" />
+                </div>  
+              )
+            }
+          </div>
         </div>
       </div>
     </div>;
 }
+
+// 

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';// useHistory
+import { Link } from 'react-router-dom';
 
 import Img from './Img';
 import Btn from './Btn';
@@ -12,8 +12,6 @@ export default function NavMain({
   theme = "dark", 
   onChangeTheme, 
 }){
-  // let history = useHistory();
-  // let path = history.location.pathname;
   const searchKey = getParam("q");
   const [loadSearch, setLoadSearch] = useState(false);
   const [errorSearch, setErrorSearch] = useState();
@@ -38,10 +36,8 @@ export default function NavMain({
         getLists(params).then(res => {
           if(res?.data?.Response === "True"){
             setSearchResult(res.data.Search);
-            // history.replace(path + "?search=" + encodeURIComponent(val));
           }else{
             setSearchResult([]);
-            // history.replace(path);
             errMessage();
           }
         })
@@ -50,7 +46,6 @@ export default function NavMain({
       }else{
         setSearchResult([]);
         setErrorSearch(null);
-        // history.replace(path);
       }
     }, 1000), 
 		[typeValue, yearValue]
@@ -67,7 +62,6 @@ export default function NavMain({
       setSearchValue("");
       setSearchResult([]);
       setErrorSearch(null);
-      // history.replace(path);
     }
   }
 
@@ -142,7 +136,7 @@ export default function NavMain({
               >
                 <div 
                   className="small pb-2 ovyauto ovscroll-contain border-bottom" 
-                  style={{ maxHeight: '300px' }} // 50vh
+                  style={{ maxHeight: '300px' }} 
                 >
                   {(searchResult || []).map((v, i) => 
                     <Link 

@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
-import ImgModal from '../ImgModal';
 import CardList from '../card/CardList';
-import AsideHome from '../AsideHome';
+import AsideInfo from '../AsideInfo';
+import ImgModal from '../ImgModal';
 import { getLists } from '../../api';
 import { TOTAL_PAGES } from '../../conts/config';
 
@@ -123,7 +123,7 @@ export default function Home(){
             </div>
           </div>
 
-          <AsideHome />
+          <AsideInfo />
         </div>
       }
 

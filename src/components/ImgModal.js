@@ -35,7 +35,7 @@ export default function ImgModal({
         <Img 
           {...etc} 
           src={src} 
-          className="d-block h-75vh position-relative shadow" 
+          className="d-block mnw-300px h-75vh position-relative shadow" 
           thumb  
           frame="bs" 
           frameClass={"pe-auto flexno m-auto text-center" + (show ? " zoom" : "")} 

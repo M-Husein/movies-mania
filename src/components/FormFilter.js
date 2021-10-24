@@ -1,4 +1,5 @@
 import HtmlSelect from './HtmlSelect';
+import { TYPE_OPTIONS, yearOptions } from '../conts/config';
 
 export default function FormFilter({
   theme, 
@@ -9,17 +10,10 @@ export default function FormFilter({
   onClearType, 
   onClearYear
 }){
-  const TYPE_OPTIONS = ["movie", "series", "episode"];
-
-  const yearOptions = () => {
-    let now = new Date().getFullYear() + 5;
-    return Array.from({ length: now - 1930 }).map((v, i) => now - (i + 1));
-  }
-
   return (
     <div className="card round-top-0">
       <div className="card-header">
-        Filter
+        Filter by
       </div>
       <div className="card-body">
         <div className="mb-3">

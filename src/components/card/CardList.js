@@ -18,7 +18,7 @@ export default function CardList({
     <div className="card h-100 shadow-sm overflow-hidden card-1">
       <Img 
         frame 
-        frameClass="overflow-hidden cpoin" 
+        frameClass="overflow-hidden czoomin" 
         alt={Title} 
         src={imgSrc} 
         className="card-img-top h-300px of-contain position-relative zi-2 shadow-sm" 

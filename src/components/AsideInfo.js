@@ -1,6 +1,6 @@
 import { AUTHOR, EXTERNAL_LINKS } from "../conts/INFOS";
 
-export default function AsideHome(){
+export default function AsideInfo(){
   return (
     <aside className="col-md-3">
       <div className="card shadow-sm position-sticky t-80px">
