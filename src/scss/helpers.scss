@@ -1,4 +1,8 @@
 // Sizing:
+.w-34px {
+  width: 34px;
+}
+
 .h-75vh {
   height: 75vh;
 }
@@ -27,6 +31,10 @@
   cursor: pointer;
 }
 
+.cwait {
+  cursor: wait;
+}
+
 .bg-blur {
   background: no-repeat center rgba(0,0,0,.8);
   background-size: cover;
@@ -41,6 +49,11 @@
 
 .t-100 {
   top: 100%;
+}
+
+// For sticky element from #navMain
+.t-80px {
+  top: 80px;
 }
 
 // z-index:
@@ -65,9 +78,17 @@
   overflow-y: auto;
 }
 
+.ovscroll-contain {
+  overscroll-behavior: contain;
+}
+
 .round-top-0 {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.bgclip-border {
+  background-clip: border-box;
 }
 
 // Animations:

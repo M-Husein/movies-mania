@@ -1,14 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
+import Btn from '../Btn';
 import ImgModal from '../ImgModal';
 import CardList from '../card/CardList';
 import AsideHome from '../AsideHome';
+import { getParam } from '../../utils/Q';
 import { getLists } from '../../api';
 import { TOTAL_PAGES } from '../../conts/config';
 
-export default function Home(){
+export default function SearchResult(){
   const source = axios.CancelToken.source();
+  const searchKey = getParam("q");
   const [error, setError] = useState();
   const [load, setLoad] = useState(false);
   const [list, setList] = useState([]);
@@ -35,7 +38,7 @@ export default function Home(){
     getLists({
       type: "movie", 
       page: pageNum, 
-      s: "Batman"
+      s: searchKey
     }, source.token).then(r => {
       if(r?.data?.Response === "True"){
         const data = r.data;
@@ -49,7 +52,7 @@ export default function Home(){
 	};
 
 	useEffect(() => {
-		if (pageNum <= TOTAL_PAGES) {
+		if (searchKey && pageNum <= TOTAL_PAGES) {
 			getMovies();
 		}
 
@@ -93,6 +96,15 @@ export default function Home(){
     </div>
   );
 
+  if(!searchKey){
+    return (
+      <div className="d-flex flex-column justify-content-center align-items-center h-75vh">
+        <h1 className="h4 bi bi-info-circle"> Please type movie name</h1>
+        <Btn As="label" htmlFor="navSearch" className="bi bi-search"> Search</Btn>
+      </div>
+    );
+  }
+
   return (
     <>
       {error ? 
@@ -102,11 +114,13 @@ export default function Home(){
         : 
         <div className="row">
           <div className="col-md-9">
-            <div className="row row-cols-1 row-cols-md-3 g-4">
+            <div className="row row-cols-1 g-4">
+              <h1 className="col lead mb-0">Search Result For : <span className="badge bg-primary">{searchKey}</span></h1>
+
               {(list || []).map((item, i) => 
                 <div 
                   key={i} 
-                  className="col"
+                  className="col-md-4" 
                   ref={i === list.length - 1 && load && pageNum <= TOTAL_PAGES ? setLastElement : undefined} 
                 >
                   <CardList 
