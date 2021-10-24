@@ -1,0 +1,9 @@
+// Card styles
+// .card-1 > img {
+//   height: 150px;
+// }
+
+.card-1 .img-frame::before {
+  z-index: 3;  
+}
+

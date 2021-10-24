@@ -1,0 +1,21 @@
+﻿// === Img ===
+// FOR img wrapper with div & ::after (to prevent contextmenu save as image)
+
+.img-frame {
+  position: relative;
+  // display: inline-block;
+}
+
+.img-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.img-frame, // OPTION
+.img-frame img {
+  user-select: none;
+}
+
+

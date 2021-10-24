@@ -1,0 +1,83 @@
+// Sizing:
+.h-75vh {
+  height: 75vh;
+}
+
+.h-300px {
+  height: 300px;
+}
+
+.h-400px {
+  height: 400px;
+}
+
+.of-contain {
+  object-fit: contain;
+}
+
+.of-cover {
+  object-fit: cover;
+}
+
+.op-center {
+  object-position: center;
+}
+
+.cpoin {
+  cursor: pointer;
+}
+
+.bg-blur {
+  background: no-repeat center rgba(0,0,0,.8);
+  background-size: cover;
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+}
+
+// Positions:
+.inset-0 {
+  inset: 0;
+}
+
+.t-100 {
+  top: 100%;
+}
+
+// z-index:
+.zi-2 {
+  z-index: 2;
+}
+
+.zi-1050 {
+  z-index: 1050;
+}
+
+.flexno {
+  flex: none;
+}
+
+// Opacity:
+.o-9 {
+  opacity: .9 !important;
+}
+
+.ovyauto {
+  overflow-y: auto;
+}
+
+.round-top-0 {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+// Animations:
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+.zoom {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+

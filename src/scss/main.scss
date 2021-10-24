@@ -1,0 +1,20 @@
+body {
+  overflow-y: scroll;
+}
+ 
+.focus-within-1:focus > .dropdown-menu, 
+.focus-within-1:focus-within > .dropdown-menu,
+.dd-hover:hover > .dropdown-menu {
+  display: block;
+}
+
+.dd-hover:hover {
+  z-index: 1022;
+}
+
+#navMain .dd-hover:hover > .btn {
+  color: #000;
+  background-color: #f8f9fa;
+  border-bottom-left-radius: 0;
+}
+

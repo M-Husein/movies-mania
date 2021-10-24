@@ -1,0 +1,36 @@
+// <HtmlSelect />
+
+.wrapHtmlSelect[aria-label]:after {
+  content: attr(aria-label);
+  position: absolute;
+  inset: 1px;
+  margin-right: 2.25rem;
+  border-radius: .25rem;
+  padding: .375rem .75rem;
+  pointer-events: none;
+  user-select: none;
+  z-index: 3;
+  background-color: #fff;
+  color: #6c757d;
+}
+
+.wrapHtmlSelect[aria-label].input-group-lg:after {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  font-size: 1.25rem;
+  border-radius: .3rem;
+}
+
+.wrapHtmlSelect[aria-label].input-group-sm:after {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  padding-left: .5rem;
+  font-size: .875rem;
+  border-radius: .2rem;
+}
+
+.wrapHtmlSelect .btn-outline-secondary {
+  border-color: #ced4da;
+}
+
