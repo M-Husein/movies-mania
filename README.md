@@ -1,6 +1,6 @@
 # Movie Mania
 
-1. Download source code.
+1. Download / clone source code.
 2. install dependencies with CLI in root folder, type **npm install** and Enter.
 3. See instructions below to run App.
 
